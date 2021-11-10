@@ -1,0 +1,4 @@
+
+const initializeAuth = {
+    initializeApp(firebaseConfig);
+}
