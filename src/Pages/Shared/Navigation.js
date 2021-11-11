@@ -1,8 +1,12 @@
+import { Box } from '@mui/material';
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 const Navigation = () => {
+  const {user, logOut} = useAuth()
+  // console.log(user)
     return (
         <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -14,7 +18,19 @@ const Navigation = () => {
 
 <Nav className="ms-auto">
   <Nav.Link as = {Link} to ="/home">Home</Nav.Link>
-  <Nav.Link as = {Link} to ="/login">Log In</Nav.Link>
+  <Nav.Link as = {Link} to ="/about">About</Nav.Link>
+  <Nav.Link as = {Link} to ="/appartments">Appartments</Nav.Link>
+  {
+    user.email && <Nav.Link as = {Link} to ="/dashboard">Dashboard</Nav.Link>
+  }
+  {
+    user.email ? 
+    <Box>
+        <Nav.Link as = {Link} to ="/" onClick = {logOut}>Log Out</Nav.Link> 
+    </Box>
+    : <Nav.Link as = {Link} to ="/login">Log In</Nav.Link> 
+
+  }
   
 </Nav>
 </Navbar.Collapse>

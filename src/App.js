@@ -4,10 +4,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Authentication/Login';
 import Register from './Pages/Authentication/Register';
+import AuthProvider from './Pages/Context/AuthProvider';
+import About from './Pages/About/About';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Appartments from './Pages/Appartments/Appartments';
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
       <Switch>
         <Route exact path = '/'>
@@ -16,6 +22,12 @@ function App() {
         <Route path = '/home'>
           <Home></Home>
         </Route>
+        <PrivateRoute path = '/about'>
+          <About></About>
+        </PrivateRoute>
+        <PrivateRoute path = '/dashboard'>
+          <Dashboard></Dashboard>
+        </PrivateRoute>
        
         <Route path = '/login'>
           <Login></Login>
@@ -23,9 +35,13 @@ function App() {
         <Route path = '/register'>
           <Register></Register>
         </Route>
+        <Route path = '/appartments'>
+          <Appartments></Appartments>
+        </Route>
         
       </Switch>
       </Router>
+      </AuthProvider>
     </div>
   );
 }

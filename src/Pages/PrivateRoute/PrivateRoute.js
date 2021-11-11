@@ -1,14 +1,19 @@
+import { CircularProgress } from '@mui/material';
 import React from 'react';
-import { Spinner } from 'react-bootstrap';
 import { Redirect, Route } from 'react-router';
+import useAuth from '../Hooks/useAuth';
 import useFirebase from '../Hooks/useFirebase';
 
 
 const PrivateRoute = ({children , ...rest}) => {
-    const {user, isLoading} = useFirebase()
+    const {user, isLoading} = useAuth()
+    console.log(isLoading,user.email)
+    
     if(isLoading){
-        return <Spinner animation="grow" />
+        console.log(user.email)
+        return <CircularProgress />
     }
+    console.log(user.email)
     return (
        <Route
        {...rest}
