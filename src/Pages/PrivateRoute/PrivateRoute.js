@@ -7,13 +7,13 @@ import useFirebase from '../Hooks/useFirebase';
 
 const PrivateRoute = ({children , ...rest}) => {
     const {user, isLoading} = useAuth()
-    console.log(isLoading,user.email)
+    // console.log(isLoading,user.email)
     
     if(isLoading){
         console.log(user.email)
         return <CircularProgress />
     }
-    console.log(user.email)
+    // console.log(user.email)
     return (
        <Route
        {...rest}
