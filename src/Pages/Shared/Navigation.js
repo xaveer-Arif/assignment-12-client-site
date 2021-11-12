@@ -2,10 +2,10 @@ import { Box } from '@mui/material';
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useAuth from '../Hooks/useAuth';
+import useFirebase from '../Hooks/useFirebase';
 
 const Navigation = () => {
-  const {user, logOut} = useAuth()
+  const {user, logOut} = useFirebase()
   // console.log(user)
     return (
         <div>
@@ -25,11 +25,13 @@ const Navigation = () => {
   }
   {
     user.email ? 
-    <Box>
         <Nav.Link as = {Link} to ="/" onClick = {logOut}>Log Out</Nav.Link> 
-    </Box>
+    
     : <Nav.Link as = {Link} to ="/login">Log In</Nav.Link> 
 
+  }
+  {
+    user.displayName && <Nav.Link>{user.displayName}</Nav.Link> 
   }
   
 </Nav>

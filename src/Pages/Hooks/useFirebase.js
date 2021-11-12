@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import initializeAuth from "../Firebase/Firebase.init";
-import {getAuth, createUserWithEmailAndPassword,signOut , onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import {getAuth, createUserWithEmailAndPassword,signOut , onAuthStateChanged, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
 
 initializeAuth()
 
@@ -11,15 +11,26 @@ const useFirebase = () => {
     const auth = getAuth()
 
     // register
-    const register = (email, password, history, location) => {
+    const register = (email, name,  password, history, location) => {
         setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             const distination = location?.state?.from || '/';
             history.replace(distination)
-            const user = result.user;
-            console.log(user)
-            setUser(user)
+            /* const user = result.user;
+            user.name = {name} */
+            const newUser = {email, displayName:name}
+            setUser(newUser)
+            updateProfile(auth.currentUser, {
+                displayName: name
+              }).then(() => {
+                // Profile updated!
+                // ...
+              }).catch((error) => {
+                // An error occurred
+                // ...
+              });
+            // setUser(user)
         })
         .catch(error => {
             setError(error.message)
@@ -50,8 +61,8 @@ const useFirebase = () => {
               setUser({})
             }
             setIsLoading(false)
+            return() => unsubscribe
           });
-          return() => unsubscribe
     } , [])
 
     // logout 

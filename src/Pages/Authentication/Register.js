@@ -28,7 +28,7 @@ const Register = () => {
             return setError("password doesn't match")
         }
         // console.log(userData)
-        register(userData.email, userData.password1, history, location)
+        register(userData.email, userData.name, userData.password1, history, location)
 
         setError('')
         document.getElementById("myform").reset();

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navigation from '../Shared/Navigation';
+import Appartment from './Appartment/Appartment';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 const Appartments = () => {
     const [appartments, setAppartments] = useState([])
@@ -9,10 +12,21 @@ const Appartments = () => {
         .then(data => setAppartments(data))
     },[])
     return (
-        <div>
+        
+        <Box sx={{ flexGrow: 1 }}>
             <Navigation/>  
             <h1>appartmetns {appartments.length}</h1>
-        </div>
+            
+            <Grid container spacing={2}>
+            {
+                appartments.map(appartment => <Appartment
+                key = {appartment._id}
+                appartment = {appartment}
+                ></Appartment>)
+            }
+            </Grid>
+        </Box>
+
     );
 };
 

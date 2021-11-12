@@ -9,6 +9,7 @@ import About from './Pages/About/About';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Appartments from './Pages/Appartments/Appartments';
+import Purchase from './Pages/Appartments/Purchase/Purchase';
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path = '/appartments'>
           <Appartments></Appartments>
+        </Route>
+        <Route path = '/purchase/:id'>
+          <Purchase></Purchase>
         </Route>
         
       </Switch>
