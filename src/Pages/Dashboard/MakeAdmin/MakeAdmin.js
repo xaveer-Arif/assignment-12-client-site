@@ -8,18 +8,19 @@ const MakeAdmin = () => {
         setEmail(e.target.value)
     }
     const handleSubmit = e => {
-        // const user = {email:email}
-        // console.log(user)
-        e.preventDefault()
+        const user = {email}
+        console.log(user)
         fetch('http://localhost:5000/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify(email)
+            body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then()
+        // .then(res => res.json())
+        // .then(data => console.log(data))
+        e.preventDefault()
 
         // window.confirm('Are you sure to create new admin')
         // console.log(user)

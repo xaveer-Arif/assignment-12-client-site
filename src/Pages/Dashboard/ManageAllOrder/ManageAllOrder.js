@@ -25,13 +25,16 @@ const ManageAllOrder = () => {
         })
         // console.log(id)
     }
+    const orderAccept = id => {
+        console.log(id)
+    }
     return (
         <div>
             <h1>manage all order</h1>
        <Grid container spacing={2}>
             
                { products.map(product => 
-                <Grid item xs={8} md ={4}>
+                <Grid item xs={12} md ={4}>
                     <Card sx={{ maxWidth: 300 }}>
                    <CardMedia
                      component="img"
@@ -50,11 +53,25 @@ const ManageAllOrder = () => {
                      <Typography variant="body2" color="text.secondary">
                       details : {product.price}
                      </Typography>
+                     <Typography variant="body2" color="text.secondary">
+                      Status : {product.status}
+                     </Typography>
                      
                    </CardContent>
                    <CardActions>
                        
-                {<Button onClick  = {() => deleteItem(product._id)} variant = 'contained' size="small">Delete</Button> }
+                <Button 
+                onClick  = {() => deleteItem(product._id)}
+                variant = 'contained'
+                style = {{background: 'red' , margin:'auto'}}
+                size="small"
+                >Delete</Button> 
+
+                <Button 
+                onClick = {() => orderAccept(product._id)} 
+                style = {{  margin:'auto'}}
+                variant = 'contained' 
+                size="small">Accept</Button>
                     
                    </CardActions>
                  </Card>
