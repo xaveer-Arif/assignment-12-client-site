@@ -72,30 +72,32 @@ function Dashboard(props) {
      
       <List>
 
-    <Link to = '/'><Button  style = {{fontSize:'16px'}}>Home</Button></Link>
+    <Link to = '/' style = {{ textDecoration:'none' }}><Button 
+     style = {{fontSize: '16px'}}  >Home</Button></Link>
     <br/>
 
-      <Link to = {`${url}/myorders`}><Button style = {{fontSize:'16px', textDecoration:'none'}}>Your Orders</Button></Link>
+    <Link to = {`${url}/myorders`} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Your Orders</Button></Link>
+    <br/>
 
-    <Link to = {`${url}/payment`}><Button style = {{fontSize:'16px'}}>Payment</Button></Link>
+    <Link to = {`${url}/payment`} style = {{textDecoration:'none'}}><Button  style = {{fontSize: '16px'}}  >Payment</Button></Link>
     <br />
 
-    <Link to = {`${url}/review`}><Button  style = {{fontSize:'16px'}}>Review</Button></Link>
+    <Link to = {`${url}/review`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Review</Button></Link>
     <br />
 
-    <Link to = {`${url}/addProduct`}><Button  style = {{fontSize:'16px'}}>Add Product</Button></Link>
+    <Link to = {`${url}/addProduct`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Add Product</Button></Link>
     <br />
 
-    <Link to = {`${url}/manageProducts`}><Button  style = {{fontSize:'16px', textDecoration:'none'}}>Manage Product</Button></Link>
+    <Link to = {`${url}/manageProducts`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Manage Product</Button></Link>
     <br />
 
-    <Link to = {`${url}/manageAllOrder`}><Button  style = {{fontSize:'16px'}}>Manage All Order</Button></Link>
+    <Link to = {`${url}/manageAllOrder`} style = {{ textDecoration:'none'}}><Button  style = {{fontSize: '16px'}}  >Manage All Order</Button></Link>
     <br />
 
-    <Link to = {`${url}/makeAdmin`}><Button  style = {{fontSize:'16px'}}>Create Admin</Button></Link>
+    <Link to = {`${url}/makeAdmin`} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Create Admin</Button></Link>
     
     <br />
-    <Link to = {`${url}`}><Button onClick = {logOut} style = {{fontSize:'16px'}}>log out</Button></Link>
+    <Link to = {`${url}`}  onClick = {logOut} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >log out</Button></Link>
       </List>
       
     </div>
@@ -137,6 +139,7 @@ function Dashboard(props) {
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        
         <Drawer
           container={container}
           variant="temporary"
@@ -172,6 +175,10 @@ function Dashboard(props) {
         {/* <Route exact path={path}>
           <h3>Please select a topic.</h3>
         </Route> */}
+        <Route exact path={path}>
+        <h1>Welcome to your dashboard</h1>
+        </Route>
+        
         <Route path={`${path}/myorders`}>
           <MyOrders></MyOrders>
         </Route>

@@ -50,22 +50,32 @@ const MyOrders = () => {
                    />
                    <CardContent>
                      
-                     <Typography gutterBottom variant="h5" component="div">
-                       name: {order.name}
+                     <Typography gutterBottom variant="h5" component="div" >
+                     <span style = {{color:'#2F2C28', fontWeight:'800'}}>{order.name}</span>
                      </Typography>
-                     <Typography variant="body2" color="text.secondary">
-                      details : {order.details}
+
+                     <Typography variant="body1" color="text.secondary">
+                     {order.details}
                      </Typography>
-                     <Typography variant="body2" color="text.secondary">
-                      status: {order.status}
+
+                     <Typography variant="body1" color="text.secondary">
+                     <span style = {{color:'black', fontWeight:'800'}}>status</span> :  
+                     <span style = {{color:'red', fontWeight:'800'}}>{order.status}</span>
                      </Typography>
-                     <Typography variant="body2" color="text.secondary">
-                      email: {user.email}
+
+                     <Typography variant="body1" color="text.secondary">
+                     <span style = {{color:'black', fontWeight:'800'}}>email : </span>
+                     <span style = {{color:'red', fontWeight:'800'}}>{user.email}</span>
                      </Typography>
                    </CardContent>
                    <CardActions>
                      
-                     <Button onClick  = {() => deleteItem(order._id)} variant = 'contained' size="small">Delete</Button>
+                    <Button 
+                    onClick  = {() => deleteItem(order._id)} 
+                    style = {{paddingRight: "50%", paddingLeft: "50%"}}
+                    variant = 'contained'
+                    size="small"
+                    >Delete</Button>
                     
                    </CardActions>
                  </Card>

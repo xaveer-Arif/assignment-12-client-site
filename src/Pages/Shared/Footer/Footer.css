@@ -1,0 +1,17 @@
+.footer {
+    background-color: rgba(240, 0, 0, 0.068);
+    overflow-x: hidden;
+    padding: 0;
+} 
+
+.footer-border{
+    border-left: 1px solid rgba(128, 128, 128, 0.397);
+}
+ul{
+    list-style: none;
+   
+}
+ul li {
+    padding-bottom: 9px;
+    color: rgba(197, 197, 197, 0.952);
+}

@@ -31,7 +31,7 @@ const ManageProducts = () => {
              <Grid container spacing={2}>
             
                { products.map(product => 
-                <Grid item xs={8} md ={4}>
+                <Grid item xs={12} md ={4}>
                     <Card sx={{ maxWidth: 300 }}>
                    <CardMedia
                      component="img"
@@ -42,19 +42,28 @@ const ManageProducts = () => {
                    <CardContent>
                      
                      <Typography gutterBottom variant="h5" component="div">
-                       name: {product.name}
+                         <span style = {{color:'#2F2C28', fontWeight:'800'}}>{product.name}</span>
                      </Typography>
+
                      <Typography variant="body2" color="text.secondary">
-                      details : {product.details}
+                     <span style = {{ fontWeight:'800'}}>{product.details}</span>
                      </Typography>
-                     <Typography variant="body2" color="text.secondary">
-                      details : {product.price}
+
+                     <Typography variant="h6" color="text.secondary">
+                     <span style = {{color:'black', fontWeight:'800'}}>Price</span> :
+                     <span style = {{ fontWeight:'800'}}>
+                    ${product.price}</span>
                      </Typography>
                      
                    </CardContent>
                    <CardActions>
                        
-                <Button onClick  = {() => deleteItem(product._id)} variant = 'contained' size="small">Delete</Button> 
+                <Button
+                onClick  = {() => deleteItem(product._id)} 
+                variant = 'contained' 
+                style = {{margin:'auto', paddingRight: '50%' , paddingLeft: '50%'}}
+                size="small"
+                >Delete</Button> 
                     
                    </CardActions>
                  </Card>

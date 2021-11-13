@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography,Button } from '@mui/material';
+import useFirebase from '../../Hooks/useFirebase';
 
 const ManageAllOrder = () => {
     const [products, setProducts] = useState([])
@@ -56,17 +57,25 @@ const ManageAllOrder = () => {
                    />
                    <CardContent>
                      
-                     <Typography gutterBottom variant="h5" component="div">
-                       name: {product.name}
+                     <Typography gutterBottom variant="h5" component="div"style = {{color:'#2F2C28', fontWeight:'800'}}>
+                      {product.name}
                      </Typography>
                      <Typography variant="body2" color="text.secondary">
-                      details : {product.details}
+                        {product.details}
+                     </Typography>
+                     <Typography variant="h6" color="text.secondary">
+                    <span style = {{color:'black', fontWeight:'800'}}>Price</span>
+                     : ${product.price}
                      </Typography>
                      <Typography variant="body2" color="text.secondary">
-                      details : {product.price}
+                      
+                     <span style = {{color:'black', fontWeight:'800'}}>  Status :</span> 
+                     <span style = {{color:'red', fontWeight:'800'}}>{product.status}</span> 
                      </Typography>
                      <Typography variant="body2" color="text.secondary">
-                      Status : {product.status}
+                      
+                     <span style = {{color:'black', fontWeight:'800'}}>  email :</span> 
+                     <span style = {{color:'red', fontWeight:'800'}}>{product.email}</span> 
                      </Typography>
                      
                    </CardContent>
