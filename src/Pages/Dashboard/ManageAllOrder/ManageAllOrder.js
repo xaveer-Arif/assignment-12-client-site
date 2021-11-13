@@ -10,6 +10,8 @@ const ManageAllOrder = () => {
         .then(data => setProducts(data))
     },[products])
 
+    //delete items 
+
     const deleteItem = id => {
         fetch(`http://localhost:5000/deleteOrder/${id}`,{
             method: 'DELETE'
@@ -25,8 +27,18 @@ const ManageAllOrder = () => {
         })
         // console.log(id)
     }
+    
+    // accept order
+
     const orderAccept = id => {
-        console.log(id)
+        const orderId = {id}
+        fetch('http://localhost:5000/status', {
+            method: "PUT",
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(orderId)
+        })
     }
     return (
         <div>

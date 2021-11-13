@@ -18,18 +18,16 @@ const MakeAdmin = () => {
             body: JSON.stringify(user)
         })
         .then()
-        // .then(res => res.json())
-        // .then(data => console.log(data))
+        document.getElementById("myForm").reset();
+
         e.preventDefault()
 
-        // window.confirm('Are you sure to create new admin')
-        // console.log(user)
     }
     
     return (
         <div>
                 <h1>Create New Admin</h1>
-            <form onSubmit = {handleSubmit}>
+            <form onSubmit = {handleSubmit} id = {'myForm'}>
             <TextField
             sx ={{width:'50%'}}
             id="outlined-basic"
