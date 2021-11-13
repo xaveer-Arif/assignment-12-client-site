@@ -1,16 +1,13 @@
-import { ContentPasteOffSharp } from '@mui/icons-material';
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography, Button, TextField, Input } from '@mui/material';
 import Container from '@mui/material/Container';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-// import useAuth from '../../Hooks/useAuth';
 import useFirebase from '../../Hooks/useFirebase';
 import Navigation from '../../Shared/Navigation';
 import { useForm } from "react-hook-form";
 import Appartment from '../Appartment/Appartment';
-import { CircularProgress} from '@mui/material';
-import { fontSize } from '@mui/system';
+
 
 const Purchase = () => {
     const {id} = useParams()
@@ -25,7 +22,7 @@ const Purchase = () => {
     const {name, price, img, _id, details} = appartment
     const {email, displayName} = user
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://guarded-retreat-48750.herokuapp.com/services')
         .then(res => res.json())
         .then(services =>{
            const singleAppointment = services.find(service => service._id === id)
@@ -33,13 +30,7 @@ const Purchase = () => {
            setAppartment(singleAppointment)
         })
     },[])
-    // console.log(appartment)
-   /*  fetch('http://localhost:5000/services')
-    .then(res => res.json())
-    .then(services =>{
-       const singleAppointment = services.find(service => service._id === id)
-       console.log(singleAppointment)
-    }) */
+    
     const handleOnBlur = e => {
         const field = e.target.name
         const value = e.target.value
@@ -60,7 +51,7 @@ const Purchase = () => {
     console.log(loginData)
     const handlerUserForm = e => {
         e.preventDefault()
-        fetch('http://localhost:5000/order', {
+        fetch('https://guarded-retreat-48750.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -171,17 +162,3 @@ const Purchase = () => {
 };
 
 export default Purchase;
-{/* <form onSubmit={handleSubmit(onSubmit)}>
-                 <input type = 'text' defaultValue={appartment.name} {...register("service")} /> <br />
-                 <input defaultValue={appartment.price} {...register("price")} /> <br />
-                 <input defaultValue={user?.displayName} {...register("name")} /> <br />
-                 <input defaultValue={user?.email} {...register("email")} />
-                <br />
-     
-                <input placeholder = 'contact number' {...register("phone", { required: true })} />
-                <br />
-                <input placeholder = 'address' {...register("address", { required: true })} />
-                {errors.exampleRequired && <span>This field is required</span>}
-                <br />
-                <input type="submit" />
-    </form> */}

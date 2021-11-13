@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 const Appartments = () => {
     const [appartments, setAppartments] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://guarded-retreat-48750.herokuapp.com/services')
         .then(res => res.json())
         .then(data => setAppartments(data))
     },[])

@@ -20,8 +20,7 @@ const AddProduct = () => {
         e.preventDefault()
         alert('data of form')
 
-        // const product = {productData}
-        fetch('http://localhost:5000/addproduct', {
+        fetch('https://guarded-retreat-48750.herokuapp.com/addproduct', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

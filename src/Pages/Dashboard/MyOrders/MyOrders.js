@@ -13,7 +13,7 @@ const MyOrders = () => {
     const {user} = useFirebase()
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myorder?email=${user.email}`)
+        fetch(`https://guarded-retreat-48750.herokuapp.com/myorder?email=${user.email}`)
     .then(res => res.json())
     .then(data => setOrders(data))
     
@@ -21,7 +21,7 @@ const MyOrders = () => {
     // console.log(order)
     // console.log(user.email)
     const deleteItem = id => {
-        fetch(`http://localhost:5000/delete/${id}`,{
+        fetch(`https://guarded-retreat-48750.herokuapp.com/delete/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

@@ -6,7 +6,7 @@ const ManageAllOrder = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/allorder')
+        fetch('https://guarded-retreat-48750.herokuapp.com/allorder')
         .then(res => res.json())
         .then(data => setProducts(data))
     },[products])
@@ -14,7 +14,7 @@ const ManageAllOrder = () => {
     //delete items 
 
     const deleteItem = id => {
-        fetch(`http://localhost:5000/deleteOrder/${id}`,{
+        fetch(`https://guarded-retreat-48750.herokuapp.com/deleteOrder/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const ManageAllOrder = () => {
 
     const orderAccept = id => {
         const orderId = {id}
-        fetch('http://localhost:5000/status', {
+        fetch('https://guarded-retreat-48750.herokuapp.com/status', {
             method: "PUT",
             headers: {
                 'content-type' : 'application/json'

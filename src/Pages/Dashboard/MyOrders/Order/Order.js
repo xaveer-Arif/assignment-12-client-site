@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Order = ({order}) => {
     const {name,img,details,status,_id,email} = order;
     const deleteItem = id => {
-        fetch(`http://localhost:5000/delete/${id}`,{
+        fetch(`https://guarded-retreat-48750.herokuapp.com/delete/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -48,9 +48,7 @@ const Order = ({order}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Link to = {`/purchase/${_id}`}>
-        <Button variant = 'contained' size="small">Learn More</Button>
-        </Link> */}
+     
         
         <Button onClick  = {() => deleteItem(_id)} variant = 'contained' size="small">Delete</Button>
        
