@@ -43,10 +43,10 @@ function Dashboard(props) {
   const {user} = useAuth()
   const history = useHistory()
   const location = useLocation()
-  const {logOut} = useFirebase()
+  const {logOut, admin} = useFirebase()
 
   
-
+console.log(admin)
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -75,28 +75,30 @@ function Dashboard(props) {
     <Link to = '/' style = {{ textDecoration:'none' }}><Button 
      style = {{fontSize: '16px'}}  >Home</Button></Link>
     <br/>
-
-    <Link to = {`${url}/myorders`} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Your Orders</Button></Link>
-    <br/>
-
-    <Link to = {`${url}/payment`} style = {{textDecoration:'none'}}><Button  style = {{fontSize: '16px'}}  >Payment</Button></Link>
-    <br />
-
-    <Link to = {`${url}/review`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Review</Button></Link>
-    <br />
-
-    <Link to = {`${url}/addProduct`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Add Product</Button></Link>
-    <br />
-
-    <Link to = {`${url}/manageProducts`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Manage Product</Button></Link>
-    <br />
-
-    <Link to = {`${url}/manageAllOrder`} style = {{ textDecoration:'none'}}><Button  style = {{fontSize: '16px'}}  >Manage All Order</Button></Link>
-    <br />
-
-    <Link to = {`${url}/makeAdmin`} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Create Admin</Button></Link>
+      {
+        !admin && 
+        <Box>
+        <Link to = {`${url}/myorders`} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Your Orders</Button></Link>
+      <br/> 
+      <Link to = {`${url}/payment`} style = {{textDecoration:'none'}}><Button  style = {{fontSize: '16px'}}  >Payment</Button></Link>
+      <br />
+      <Link to = {`${url}/review`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Review</Button></Link>
+      </Box>
+      }
     
+
+
+
+    {admin && 
+    <Box>
+      <Link to = {`${url}/addProduct`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Add Product</Button></Link><br />
+      <Link to = {`${url}/manageProducts`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Manage Product</Button></Link>
     <br />
+    <Link to = {`${url}/manageAllOrder`} style = {{ textDecoration:'none'}}><Button  style = {{fontSize: '16px'}}  >Manage All Order</Button></Link>
+    <br /> <Link to = {`${url}/makeAdmin`} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Create Admin</Button></Link>
+    </Box>
+    
+    }
     <Link to = {`${url}`}  onClick = {logOut} style = {{textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >log out</Button></Link>
       </List>
       

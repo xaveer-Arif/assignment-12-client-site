@@ -8,6 +8,7 @@ const useFirebase = () => {
     const [user , setUser] = useState({})
     const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [admin, setAdmin] = useState(false)
     const auth = getAuth()
 
     // register
@@ -75,11 +76,17 @@ const useFirebase = () => {
         })
         .finally(() => setIsLoading(false))
     }
+    // admin
+    useEffect(() => {
+        fetch(`https://guarded-retreat-48750.herokuapp.com/userAdmin/${user.email}`)
+        .then(res => res.json())
+        .then(data => setAdmin(data))
+    },[user.email])
     // save user data in database
     const saveUser = (email, displayName) => {
         const user = {email, displayName}
         console.log(user)
-        fetch('http://localhost:5000/users',{
+        fetch('https://guarded-retreat-48750.herokuapp.com/users',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -91,6 +98,7 @@ const useFirebase = () => {
 // console.log(user)
     return {
         user, 
+        admin,
         isLoading,
         signIn,
         register,
