@@ -16,21 +16,22 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             const distination = location?.state?.from || '/';
-            history.replace(distination)
             /* const user = result.user;
             user.name = {name} */
-            const newUser = {email, displayName:name}
+            const newUser = {email, displayName: name}
             setUser(newUser)
+            saveUser(email, name)
             updateProfile(auth.currentUser, {
                 displayName: name
-              }).then(() => {
+            }).then(() => {
                 // Profile updated!
                 // ...
-              }).catch((error) => {
+            }).catch((error) => {
                 // An error occurred
                 // ...
-              });
+            });
             // setUser(user)
+            history.replace(distination)
         })
         .catch(error => {
             setError(error.message)
@@ -73,6 +74,19 @@ const useFirebase = () => {
 
         })
         .finally(() => setIsLoading(false))
+    }
+    // save user data in database
+    const saveUser = (email, displayName) => {
+        const user = {email, displayName}
+        console.log(user)
+        fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then()
     }
 // console.log(user)
     return {

@@ -30,6 +30,12 @@ import MyOrders from './MyOrders/MyOrders';
 import Payment from './Payment/Payment';
 import Review from './Review/Review';
 import useAuth from '../Hooks/useAuth';
+import useFirebase from '../Hooks/useFirebase';
+import Home from '../Home/Home/Home';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
+import AddProduct from './AddProduct/AddProduct';
+import ManageProducts from './ManageProducts/ManageProducts';
+import ManageAllOrder from './ManageAllOrder/ManageAllOrder';
 
 const drawerWidth = 200;
 
@@ -37,6 +43,7 @@ function Dashboard(props) {
   const {user} = useAuth()
   const history = useHistory()
   const location = useLocation()
+  const {logOut} = useFirebase()
 
   
 
@@ -65,11 +72,30 @@ function Dashboard(props) {
      
       <List>
 
+    <Link to = '/'><Button  style = {{fontSize:'16px'}}>Home</Button></Link>
+    <br/>
+
       <Link to = {`${url}/myorders`}><Button style = {{fontSize:'16px', textDecoration:'none'}}>Your Orders</Button></Link>
 
     <Link to = {`${url}/payment`}><Button style = {{fontSize:'16px'}}>Payment</Button></Link>
     <br />
-    <Link to = {`${url}/review`}><Button style = {{fontSize:'16px'}}>Review</Button></Link>
+
+    <Link to = {`${url}/review`}><Button  style = {{fontSize:'16px'}}>Review</Button></Link>
+    <br />
+
+    <Link to = {`${url}/addProduct`}><Button  style = {{fontSize:'16px'}}>Add Product</Button></Link>
+    <br />
+
+    <Link to = {`${url}/manageProducts`}><Button  style = {{fontSize:'16px'}}>Manage Product</Button></Link>
+    <br />
+
+    <Link to = {`${url}/manageAllOrder`}><Button  style = {{fontSize:'16px'}}>Manage All Order</Button></Link>
+    <br />
+
+    <Link to = {`${url}/makeAdmin`}><Button  style = {{fontSize:'16px'}}>Create Admin</Button></Link>
+    
+    <br />
+    <Link to = {`${url}`}><Button onClick = {logOut} style = {{fontSize:'16px'}}>log out</Button></Link>
       </List>
       
     </div>
@@ -155,6 +181,19 @@ function Dashboard(props) {
         <Route path={`${path}/review`}>
           <Review></Review>
         </Route>
+        <Route path={`${path}/manageAllOrder`}>
+          <ManageAllOrder></ManageAllOrder>
+        </Route>
+        <Route path={`${path}/manageProducts`}>
+          <ManageProducts></ManageProducts>
+        </Route>
+        <Route path={`${path}/addProduct`}>
+          <AddProduct></AddProduct>
+        </Route>
+        <Route path={`${path}/makeAdmin`}>
+          <MakeAdmin></MakeAdmin>
+        </Route>
+        
       </Switch>
         
       </Box>
