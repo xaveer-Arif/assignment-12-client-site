@@ -13,22 +13,23 @@ const AddProduct = () => {
         const newUserData = {...productData}
         newUserData[field] = value
         setProductData(newUserData)
+        console.log(newUserData)
     }
 
     const handlerUserForm = e => {
         e.preventDefault()
         alert('data of form')
 
-        const product = {productData}
+        // const product = {productData}
         fetch('http://localhost:5000/addproduct', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(productData)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then()
         
 
         setError('')
@@ -72,7 +73,7 @@ const AddProduct = () => {
                 required
                 id="standard-basic" 
                 label="image url"
-                name = 'url'
+                name = 'img'
                 onBlur = {handleOnBlur}
                 style = {{width:'50%', margin:'5px'}}
                 variant="standard" /> 

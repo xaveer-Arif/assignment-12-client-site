@@ -86,7 +86,7 @@ function Dashboard(props) {
     <Link to = {`${url}/addProduct`}><Button  style = {{fontSize:'16px'}}>Add Product</Button></Link>
     <br />
 
-    <Link to = {`${url}/manageProducts`}><Button  style = {{fontSize:'16px'}}>Manage Product</Button></Link>
+    <Link to = {`${url}/manageProducts`}><Button  style = {{fontSize:'16px', textDecoration:'none'}}>Manage Product</Button></Link>
     <br />
 
     <Link to = {`${url}/manageAllOrder`}><Button  style = {{fontSize:'16px'}}>Manage All Order</Button></Link>
