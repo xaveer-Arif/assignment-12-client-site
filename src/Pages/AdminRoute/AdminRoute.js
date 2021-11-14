@@ -5,7 +5,7 @@ import useAuth from '../Hooks/useAuth';
 import useFirebase from '../Hooks/useFirebase';
 
 
-const PrivateRoute = ({children , ...rest}) => {
+const AdminRoute = ({children , ...rest}) => {
     const {user, isLoading, admin} = useAuth()
     // console.log(isLoading,user.email)
     
@@ -18,10 +18,10 @@ const PrivateRoute = ({children , ...rest}) => {
        <Route
        {...rest}
         render = { ({location}) => 
-            user.email  ? children : <Redirect
+            user.email & admin? children : <Redirect
             to = {
                 {
-                    pathname : "/login",
+                    pathname : "/",
                     state: {from : location}
                 }
             }
@@ -38,4 +38,4 @@ const PrivateRoute = ({children , ...rest}) => {
     );
 };
 
-export default PrivateRoute;
+export default AdminRoute;

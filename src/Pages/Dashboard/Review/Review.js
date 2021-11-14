@@ -63,7 +63,6 @@ const Review = () => {
       autoComplete="off"
     >
             <h5>Review</h5>
-           
             <form onSubmit = {handleSubmit} id = 'myform'>
                 <TextField 
                 required

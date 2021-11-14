@@ -1,8 +1,7 @@
-import { Card, CardActions, CardContent, Typography, Button, Grid, Rating } from '@mui/material';
+import { Card, Typography, Grid, Rating, CircularProgress, CardContent } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 const Comment = () => {
-    // const [value, setValue] = React.useState(4);
     const [comments, setComments] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/comments')
@@ -10,11 +9,12 @@ const Comment = () => {
         .then(data => setComments(data))
     },[comments])
     return (
-        <div>
-            <h1>review</h1>
+        <div className = 'mb-5'>
+            <h1>Review</h1>
+            {!comments && <CircularProgress />}
         <Grid container spacing={2}>
             {comments.map(comment =>
-                <Grid item xs={4}>
+                <Grid item xs={12} md = {4}>
                 <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -30,22 +30,11 @@ const Comment = () => {
              
             </Typography>
           </CardContent>
-          {/* <Typography component="legend">Controlled</Typography> */}
-      {/* <Rating
-        name="simple-controlled"
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      /> */}
+          
       <Rating name="read-only" value={comment.ratings} readOnly />
-     
-         
-        </Card>
-                </Grid>
-            )
-            
-}
+     </Card>
+    </Grid>
+)}
     </Grid>
         </div>
     );

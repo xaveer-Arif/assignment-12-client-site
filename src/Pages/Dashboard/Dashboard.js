@@ -36,6 +36,7 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddProduct from './AddProduct/AddProduct';
 import ManageProducts from './ManageProducts/ManageProducts';
 import ManageAllOrder from './ManageAllOrder/ManageAllOrder';
+import AdminRoute from '../AdminRoute/AdminRoute';
 
 const drawerWidth = 200;
 
@@ -86,9 +87,6 @@ console.log(admin)
       </Box>
       }
     
-
-
-
     {admin && 
     <Box>
       <Link to = {`${url}/addProduct`} style = {{ textDecoration:'none'}}><Button style = {{fontSize: '16px'}}  >Add Product</Button></Link><br />
@@ -190,18 +188,18 @@ console.log(admin)
         <Route path={`${path}/review`}>
           <Review></Review>
         </Route>
-        <Route path={`${path}/manageAllOrder`}>
+        <AdminRoute path={`${path}/manageAllOrder`}>
           <ManageAllOrder></ManageAllOrder>
-        </Route>
-        <Route path={`${path}/manageProducts`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/manageProducts`}>
           <ManageProducts></ManageProducts>
-        </Route>
-        <Route path={`${path}/addProduct`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/addProduct`}>
           <AddProduct></AddProduct>
-        </Route>
-        <Route path={`${path}/makeAdmin`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/makeAdmin`}>
           <MakeAdmin></MakeAdmin>
-        </Route>
+        </AdminRoute>
         
       </Switch>
         
