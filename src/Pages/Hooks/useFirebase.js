@@ -17,9 +17,7 @@ const useFirebase = () => {
         console.log(isLoading)
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
-            const distination = location?.state?.from || '/';
-            /* const user = result.user;
-            user.name = {name} */
+            
             const newUser = {email, displayName: name}
             setUser(newUser)
             saveUser(email, name)
@@ -33,7 +31,7 @@ const useFirebase = () => {
                 // ...
             });
             // setUser(user)
-            history.replace(distination)
+            history.replace('/')
         })
         .finally(error => {
             setIsLoading(false)
@@ -45,17 +43,14 @@ const useFirebase = () => {
      // signin
      const signIn =(email, password, history , location) => {
         setIsLoading(true)
-        console.log(isLoading)
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
             const distination = location?.state?.from || '/';
             history.replace(distination)
-            const user = result.user
-            setUser(user)
+            // const user = result.user
+            // setUser(user)
         })
-        .finally(() =>{ 
-            console.log(isLoading)
-            setIsLoading(false)})
+        .finally(() =>setIsLoading(false))
     }
 
 
