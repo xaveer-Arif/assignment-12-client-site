@@ -2,7 +2,6 @@ import { CircularProgress } from '@mui/material';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
 import useAuth from '../Hooks/useAuth';
-import useFirebase from '../Hooks/useFirebase';
 
 
 const AdminRoute = ({children , ...rest}) => {
@@ -18,7 +17,7 @@ const AdminRoute = ({children , ...rest}) => {
        <Route
        {...rest}
         render = { ({location}) => 
-            user.email & admin? children : <Redirect
+            user.email && admin ? children : <Redirect
             to = {
                 {
                     pathname : "/",
