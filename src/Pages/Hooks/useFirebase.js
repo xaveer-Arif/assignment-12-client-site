@@ -5,15 +5,16 @@ import {getAuth, createUserWithEmailAndPassword,signOut , onAuthStateChanged, si
 initializeAuth()
 
 const useFirebase = () => {
-    const [user , setUser] = useState({})
+    const [user , setUser] = useState([])
     const [error, setError] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [admin, setAdmin] = useState(false)
     const auth = getAuth()
 
     // register
     const register = (email, name,  password, history, location) => {
         setIsLoading(true)
+        console.log(isLoading)
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             const distination = location?.state?.from || '/';
@@ -34,15 +35,17 @@ const useFirebase = () => {
             // setUser(user)
             history.replace(distination)
         })
-        .catch(error => {
+        .finally(error => {
+            setIsLoading(false)
+            console.log(isLoading)
             setError(error.message)
         })
-        .finally(() => setIsLoading(false))
     }
 
      // signin
      const signIn =(email, password, history , location) => {
         setIsLoading(true)
+        console.log(isLoading)
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
             const distination = location?.state?.from || '/';
@@ -50,7 +53,9 @@ const useFirebase = () => {
             const user = result.user
             setUser(user)
         })
-        .finally(() => setIsLoading(false))
+        .finally(() =>{ 
+            console.log(isLoading)
+            setIsLoading(false)})
     }
 
 
@@ -63,6 +68,7 @@ const useFirebase = () => {
               setUser({})
             }
             setIsLoading(false)
+            console.log(isLoading)
             return() => unsubscribe
           });
     } , [])
@@ -74,16 +80,26 @@ const useFirebase = () => {
         .then(() => {
 
         })
-        .finally(() => setIsLoading(false))
+        .finally(() => {
+            console.log(isLoading)
+            setIsLoading(false)})
     }
     // admin
     useEffect(() => {
-        fetch(`https://guarded-retreat-48750.herokuapp.com/userAdmin/${user.email}`)
+        if(user.email){
+       fetch(`https://guarded-retreat-48750.herokuapp.com/userAdmin/${user.email}`)
         .then(res => res.json())
         .then(data => setAdmin(data))
+        }
+        
     },[user.email])
+    
+    
+
+    // console.log(user.email)
     // save user data in database
     const saveUser = (email, displayName) => {
+        setIsLoading(true)
         const user = {email, displayName}
         console.log(user)
         fetch('https://guarded-retreat-48750.herokuapp.com/users',{
@@ -94,6 +110,10 @@ const useFirebase = () => {
             body: JSON.stringify(user)
         })
         .then()
+    
+        .finally(() => {
+            console.log(isLoading)
+            setIsLoading(false)})
     }
 // console.log(user)
     return {

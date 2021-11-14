@@ -10,8 +10,10 @@ import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Appartments from './Pages/Appartments/Appartments';
 import Purchase from './Pages/Appartments/Purchase/Purchase';
+import useFirebase from './Pages/Hooks/useFirebase';
 
 function App() {
+  const {admin} = useFirebase()
   return (
     <div className="App">
       <AuthProvider>
@@ -23,11 +25,13 @@ function App() {
         <Route path = '/home'>
           <Home></Home>
         </Route>
-        <PrivateRoute path = '/about'>
-          <About></About>
-        </PrivateRoute>
+        
         <PrivateRoute path = '/dashboard'>
           <Dashboard></Dashboard>
+        </PrivateRoute>
+
+        <PrivateRoute path = '/purchase/:id'>
+          <Purchase></Purchase>
         </PrivateRoute>
        
         <Route path = '/login'>
@@ -39,10 +43,6 @@ function App() {
         <Route path = '/appartments'>
           <Appartments></Appartments>
         </Route>
-        <Route path = '/purchase/:id'>
-          <Purchase></Purchase>
-        </Route>
-        
       </Switch>
       </Router>
       </AuthProvider>

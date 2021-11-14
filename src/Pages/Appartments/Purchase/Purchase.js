@@ -3,16 +3,15 @@ import Container from '@mui/material/Container';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../Hooks/useFirebase';
 import Navigation from '../../Shared/Navigation';
 import { useForm } from "react-hook-form";
-import Appartment from '../Appartment/Appartment';
+import useAuth from '../../Hooks/useAuth';
 
 
 const Purchase = () => {
     const {id} = useParams()
-    const {user} = useFirebase()
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {user} = useAuth()
+    const { formState: { errors } } = useForm();
     const [userData, setUserData] = useState({})
     const [error, setError] = useState('')
     const [order, setOrder] = useState([])
@@ -26,7 +25,7 @@ const Purchase = () => {
         .then(res => res.json())
         .then(services =>{
            const singleAppointment = services.find(service => service._id === id)
-
+            // console.log(services)
            setAppartment(singleAppointment)
         })
     },[])
@@ -48,7 +47,7 @@ const Purchase = () => {
         displayName,
         status:'pendimg'
     }
-    console.log(loginData)
+    // console.log(loginData)
     const handlerUserForm = e => {
         e.preventDefault()
         fetch('https://guarded-retreat-48750.herokuapp.com/order', {
@@ -59,7 +58,7 @@ const Purchase = () => {
             body: JSON.stringify(loginData)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then()
         
 
         document.getElementById("myform").reset();

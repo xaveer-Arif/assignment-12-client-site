@@ -17,7 +17,7 @@ const MyOrders = () => {
     .then(res => res.json())
     .then(data => setOrders(data))
     
-    },[orders])
+    },[user])
     // console.log(order)
     // console.log(user.email)
     const deleteItem = id => {

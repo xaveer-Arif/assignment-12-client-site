@@ -10,10 +10,10 @@ const PrivateRoute = ({children , ...rest}) => {
     // console.log(isLoading,user.email)
     
     if(isLoading){
-        console.log(user.email)
+        // console.log(user.email)
         return <CircularProgress />
     }
-    // console.log(user.email)
+    console.log(isLoading)
     return (
        <Route
        {...rest}

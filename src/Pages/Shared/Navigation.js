@@ -18,7 +18,6 @@ const Navigation = () => {
 
 <Nav className="ms-auto">
   <Nav.Link as = {Link} to ="/home">Home</Nav.Link>
-  <Nav.Link as = {Link} to ="/about">About</Nav.Link>
   <Nav.Link as = {Link} to ="/appartments">Appartments</Nav.Link>
   {
     user.email && <Nav.Link as = {Link} to ="/dashboard">Dashboard</Nav.Link>
