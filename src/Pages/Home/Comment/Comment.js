@@ -1,7 +1,8 @@
-import { Card, CardActions, CardContent, Typography, Button, Grid } from '@mui/material';
+import { Card, CardActions, CardContent, Typography, Button, Grid, Rating } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 const Comment = () => {
+    // const [value, setValue] = React.useState(4);
     const [comments, setComments] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/comments')
@@ -29,6 +30,16 @@ const Comment = () => {
              
             </Typography>
           </CardContent>
+          {/* <Typography component="legend">Controlled</Typography> */}
+      {/* <Rating
+        name="simple-controlled"
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      /> */}
+      <Rating name="read-only" value={comment.ratings} readOnly />
+     
          
         </Card>
                 </Grid>

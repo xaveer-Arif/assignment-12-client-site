@@ -43,6 +43,10 @@ const Review = () => {
           value: '4',
           label: '4',
         },
+        {
+          value: '5',
+          label: '5',
+        },
       ];
       
         const [currency, setCurrency] = React.useState('EUR')
