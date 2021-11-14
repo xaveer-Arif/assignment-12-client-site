@@ -24,7 +24,6 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(userData)
         signIn(userData.email, userData.password, history, location)
         document.getElementById("myForm").reset();
 

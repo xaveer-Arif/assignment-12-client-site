@@ -47,7 +47,6 @@ function Dashboard(props) {
   const {logOut, admin} = useFirebase()
 
   
-console.log(admin)
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -65,11 +64,6 @@ console.log(admin)
       <Toolbar />
       <Divider />
 
-      {/* <Link to = {`${url}/myorders`}><Button style = {{fontSize:'16px', textDecoration:'none'}}>Your Orders</Button></Link>
-
-      <Link to = {`${url}/payment`}><Button style = {{fontSize:'16px'}}>Payment</Button></Link>
-          <br />
-      <Link to = {`${url}/review`}><Button style = {{fontSize:'16px'}}>Review</Button></Link> */}
      
       <List>
 
@@ -138,7 +132,7 @@ console.log(admin)
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        
         
         <Drawer
           container={container}
@@ -172,9 +166,7 @@ console.log(admin)
       >
         <Toolbar />
         <Switch>
-        {/* <Route exact path={path}>
-          <h3>Please select a topic.</h3>
-        </Route> */}
+        
         <Route exact path={path}>
         <h1>Welcome to your dashboard</h1>
         </Route>

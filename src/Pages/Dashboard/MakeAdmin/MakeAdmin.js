@@ -9,7 +9,6 @@ const MakeAdmin = () => {
     }
     const handleSubmit = e => {
         const user = {email}
-        console.log(user)
         fetch('https://guarded-retreat-48750.herokuapp.com/admin', {
             method: 'PUT',
             headers: {

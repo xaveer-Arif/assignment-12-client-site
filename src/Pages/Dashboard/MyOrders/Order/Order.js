@@ -17,10 +17,8 @@ const Order = ({order}) => {
         .then(res => res.json())
         .then(data => {
                 if(data.deleteCount > 0){
-                    console.log(data)
                 }
         })
-        // console.log(id)
     }
     return (
        

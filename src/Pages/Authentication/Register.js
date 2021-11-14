@@ -27,7 +27,6 @@ const Register = () => {
         if(userData.password1 !== userData.password2){
             return setError("password doesn't match")
         }
-        // console.log(userData)
         register(userData.email, userData.name, userData.password1, history, location)
 
         setError('')

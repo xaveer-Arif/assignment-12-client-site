@@ -13,7 +13,6 @@ const AddProduct = () => {
         const newUserData = {...productData}
         newUserData[field] = value
         setProductData(newUserData)
-        console.log(newUserData)
     }
 
     const handlerUserForm = e => {

@@ -18,8 +18,6 @@ const MyOrders = () => {
     .then(data => setOrders(data))
     
     },[user])
-    // console.log(order)
-    // console.log(user.email)
     const deleteItem = id => {
         fetch(`https://guarded-retreat-48750.herokuapp.com/delete/${id}`,{
             method: 'DELETE'
@@ -29,11 +27,9 @@ const MyOrders = () => {
             window.confirm('are you sure to delete order')
                 if(services.deleteCount > 0){
                     const orderItems = services.filter(servcie => servcie._id !== id)
-                    console.log(orderItems)
                     setOrders(orderItems)
                 }
         })
-        // console.log(id)
     }
     return (
             <div>

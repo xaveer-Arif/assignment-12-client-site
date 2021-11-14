@@ -14,7 +14,6 @@ const useFirebase = () => {
     // register
     const register = (email, name,  password, history, location) => {
         setIsLoading(true)
-        console.log(isLoading)
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             
@@ -35,7 +34,6 @@ const useFirebase = () => {
         })
         .finally(error => {
             setIsLoading(false)
-            console.log(isLoading)
             setError(error.message)
         })
     }
@@ -85,19 +83,16 @@ const useFirebase = () => {
 
         })
         .finally(() => {
-            console.log(isLoading)
             setIsLoading(false)})
     }
    
     
     
 
-    // console.log(user.email)
     // save user data in database
     const saveUser = (email, displayName) => {
         setIsLoading(true)
         const user = {email, displayName}
-        console.log(user)
         fetch('https://guarded-retreat-48750.herokuapp.com/users',{
             method: 'POST',
             headers: {
@@ -108,10 +103,8 @@ const useFirebase = () => {
         .then()
     
         .finally(() => {
-            console.log(isLoading)
             setIsLoading(false)})
     }
-// console.log(user)
     return {
         user, 
         admin,

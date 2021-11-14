@@ -6,7 +6,6 @@ import useFirebase from '../Hooks/useFirebase';
 
 const Navigation = () => {
   const {user, logOut} = useFirebase()
-  // console.log(user)
     return (
         <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

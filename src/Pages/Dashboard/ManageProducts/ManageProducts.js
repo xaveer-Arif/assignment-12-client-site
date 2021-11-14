@@ -19,11 +19,9 @@ const ManageProducts = () => {
             window.confirm('are you sure to delete order')
                 if(services.deleteCount > 0){
                     const remaningItems = services.filter(servcie => servcie._id !== id)
-                    console.log(remaningItems)
                     setProducts(remaningItems)
                 }
         })
-        // console.log(id)
     }
     return (
         <div>

@@ -16,7 +16,6 @@ const Purchase = () => {
     const [error, setError] = useState('')
     const [order, setOrder] = useState([])
 
-    // console.log(user)
     const [appartment, setAppartment] = useState([])
     const {name, price, img, _id, details} = appartment
     const {email, displayName} = user
@@ -25,7 +24,6 @@ const Purchase = () => {
         .then(res => res.json())
         .then(services =>{
            const singleAppointment = services.find(service => service._id === id)
-            // console.log(services)
            setAppartment(singleAppointment)
         })
     },[])
@@ -47,7 +45,6 @@ const Purchase = () => {
         displayName,
         status:'pendimg'
     }
-    // console.log(loginData)
     const handlerUserForm = e => {
         e.preventDefault()
         fetch('https://guarded-retreat-48750.herokuapp.com/order', {

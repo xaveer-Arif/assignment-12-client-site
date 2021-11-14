@@ -10,7 +10,6 @@ const Review = () => {
         newReview[field] = value;
         setReview(newReview)
 
-        // console.log(e.target.value)
     }
     const handleSubmit = e => {
         e.preventDefault()
@@ -25,7 +24,6 @@ const Review = () => {
         .then()
         document.getElementById("myform").reset();
     }
-    console.log(review)
     const currencies = [
         {
           value: '1',
