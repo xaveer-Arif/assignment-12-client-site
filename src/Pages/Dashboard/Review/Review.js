@@ -77,7 +77,7 @@ const Review = () => {
             <TextField 
             required
             id="outlined-basic" 
-            style = {{width: '50%', marginRight:'5px'}}
+            style = {{width: '50%', marginRight:'5px',marginTop:'20px'}}
             name = 'comment'
             onBlur = {handleOnBlur}
             label="Review" 
