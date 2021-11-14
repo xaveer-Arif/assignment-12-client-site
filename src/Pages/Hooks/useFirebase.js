@@ -63,10 +63,19 @@ const useFirebase = () => {
               setUser({})
             }
             setIsLoading(false)
-            console.log(isLoading)
-            return() => unsubscribe
-          });
+        });
+        return() => unsubscribe
     } , [])
+
+     // admin
+     useEffect(() => {
+        if(user.email){
+       fetch(`https://guarded-retreat-48750.herokuapp.com/userAdmin/${user.email}`)
+        .then(res => res.json())
+        .then(data => setAdmin(data.admin))
+        }
+        
+    },[user.email])
 
     // logout 
     const logOut = () => {
@@ -79,15 +88,7 @@ const useFirebase = () => {
             console.log(isLoading)
             setIsLoading(false)})
     }
-    // admin
-    useEffect(() => {
-        if(user.email){
-       fetch(`https://guarded-retreat-48750.herokuapp.com/userAdmin/${user.email}`)
-        .then(res => res.json())
-        .then(data => setAdmin(data))
-        }
-        
-    },[user.email])
+   
     
     
 
