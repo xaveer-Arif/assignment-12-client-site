@@ -16,10 +16,10 @@ Live Server Site : [https://guarded-retreat-48750.herokuapp.com/](https://guarde
 ## Available Scripts
 
 <li>It is a Appartment related Website </li>
-<li>Find best location</li>
-<li>Save Sevices</li>
-<li>Manage Sevices</li>
-<li>Update status</li>
-
+<li>Appartment Istria is a react web templete.
+ using react, nodejs , express, firebase etc.</li>
+<li>An admin can add or remove services and 
+also update any services </li>
+<li>Admin can make another user as a admin</li>
 
 
